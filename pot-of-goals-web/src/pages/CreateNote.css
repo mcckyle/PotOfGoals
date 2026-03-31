@@ -1,0 +1,106 @@
+/* Filename: src/pages/CreateNote.css */
+
+/* ====================================
+    CreateNote Page Styles.
+======================================= */
+.create-note { max-width: 540px; width: 100%; }
+
+/* ====================================
+    CreateNote Compose State Styles.
+======================================= */
+.create-note-compose {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+}
+
+.create-note-header {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+.create-note-title { margin: 0; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.02em; }
+.create-note-subtitle { font-size: 0.9rem; color: var(--text-muted); line-height: 1.45; }
+.create-note-error {
+	margin-top: 0.2rem;
+	font-size: 0.85rem;
+	color: var(--error);
+	text-align: center;
+	opacity: 0.9;
+}
+
+/* ====================================
+    CreateNote Share State Styles.
+======================================= */
+.share-card {
+	display: flex;
+	flex-direction: column;
+	gap: 1.1rem;
+	
+	padding: clamp(1.75rem, 3vw, 2.25rem);
+	background: var(--surface-dark);
+	border-radius: var(--radius-lg);
+	border: 1px solid var(--border-dark);
+	
+	box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+	text-align: center;
+	
+	animation: shareFadeIn 220ms var(--ease-standard) both;
+}
+.share-header { display: flex; flex-direction: column; gap: 0.35rem; }
+.share-title { margin: 0; font-size: 1.35rem; font-weight: 600; }
+.share-description { font-size: 0.9rem; color: var(--text-muted); }
+.share-link { display: flex; gap: 0.5rem; margin-top: 0.4rem; }
+
+.share-link input {
+	flex: 1;
+	padding: 0.85rem 0.95rem;
+	
+	font-size: 0.85rem;
+	font-family: inherit;
+	color: inherit;
+	
+	background: rgba(255, 255, 255, 0.035);
+	border: 1px solid var(--border-dark);
+	border-radius: var(--radius-md);
+}
+
+.share-button {
+	padding: 0.85rem 1.2rem;
+	
+	border-radius: var(--radius-md);
+	border: none;
+	background: var(--primary);
+	color: #fff;
+	
+	font-size: 0.85rem;
+	font-weight: 600;
+	font-family: inherit;
+	cursor: pointer;
+	box-shadow: 0 4px 12px rgba(75, 123, 253, 0.22);
+	
+	transition: background 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+}
+.share-button:hover {
+	background: var(--accent);
+	transform: translateY(-1px);
+	box-shadow: 0 6px 16px rgba(75, 123, 253, 0.26);
+}
+.share-muted { margin-top: 0.25rem; font-size: 0.8rem; color: var(--text-muted); }
+
+/* ====================================
+    CreateNote Animations Styles.
+======================================= */
+@keyframes shareFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====================================
+    CreateNote Light Mode Styles.
+======================================= */
+@media (prefers-color-scheme: light) {
+  .share-card { background: var(--surface-light); border-color: var(--border-light); }
+  .share-link input { background: var(--bg-light); }
+}

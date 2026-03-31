@@ -1,0 +1,178 @@
+/* Filename: src/components/GoalCard/GoalCard.css */
+
+/* ====================================
+    GOAL CARD STYLES.
+======================================= */
+.goal-card {
+	position: relative;
+	
+	padding: var(--space-lg);
+	border-radius: var(--radius-lg);
+	
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
+                var(--surface-dark);
+	
+	border: 1px solid var(--border-dark);
+	box-shadow: var(--shadow-sm);
+	
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+	
+	transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+.goal-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.goal-card--complete { border-color: rgba(255, 215, 0, 0.25); box-shadow: 0 12px 40px rgba(255, 215, 0, 0.12); }
+.goal-card-header { display: flex; justify-content: space-between; align-items: center; }
+.goal-title { font-size: var(--text-lg); font-weight: 600; letter-spacing: -0.015em; }
+.goal-description { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.6; }
+
+.goal-card > *:first-child { position: relative; z-index: 1; }
+/* Animation Floats Above. */
+.goal-card :where(.pot-of-gold-animation)
+{
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* ====================================
+    GOAL PROGRESS (RAINBOW) STYLES.
+======================================= */
+.goal-progress
+{
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+	margin-top: var(--space-sm);
+}
+
+/* GoalCard Track Styles. */
+.goal-progress-track
+{
+	position: relative;
+	flex: 1;
+	height: 12px;
+	
+	border-radius: 999px;
+	background: var(--border-dark);
+	overflow: hidden;
+}
+
+/* ====================================
+    GOALCARD INTERACTIVE RAINBOW SLIDER STYLES.
+======================================= */
+.goal-progress-slider
+{
+	position: absolute;
+	inset: 0;
+	
+	width: 100%;
+	height: 100%;
+	
+	appearance: none;
+	background: transparent;
+	cursor: pointer;
+}
+/* Hide default track. */
+.goal-progress-slider::-webkit-slider-runnable-track,
+.goal-progress-slider::-moz-range-track { background: transparent; }
+
+/* Draggable handle styles. */
+.goal-progress-slider::-webkit-slider-thumb
+{
+	appearance: none;
+	
+	width: 18px;
+	height: 18px;
+	margin-top: -12px; /* Centers thumb on the 12px track. */
+	opacity: 0;
+	
+	border-radius: 50%;
+	background: white;
+	border: 2px solid rgba(255, 255, 255, 0.6);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	
+	transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+.goal-progress-track:hover .goal-progress-slider::-webkit-slider-thumb { opacity: 1; }
+.goal-progress-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+/* Firefox. */
+.goal-progress-slider::-moz-range-thumb
+{
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: white;
+	border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Rainbow fill styles. */
+.goal-progress-fill
+{
+	height: 100%;
+	border-radius: inherit;
+	
+	background: linear-gradient(
+	  90deg,
+	  #ff5f6d,
+	  #ffc371,
+	  #f9f871,
+	  #7bed9f,
+	  #70a1ff,
+	  #a29bfe,
+	  #ff6ec7
+	);
+	
+	background-size: 200% 100%;
+	
+	transition: width 250ms var(--ease-standard);
+	animation: rainbowShift 6s linear infinite;
+}
+.goal-card--complete .goal-progress-fill { filter: brightness(1.1) saturate(1.2); }
+
+/* Percent label styles. */
+.goal-progress-value
+{
+	font-size: var(--text-sm);
+	color: var(--text-muted);
+	min-width: 38px;
+	text-align: right;
+}
+
+/* Pot of goals styles. */
+.goal-pot
+{
+	font-size: 1.1rem;
+	filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+.goal-complete { font-size: var(--text-sm); color: var(--primary); font-weight: 500; }
+.goal-saving { font-size: var(--text-sm); color: var(--text-muted); opacity: 0.7; }
+.goal-actions
+{
+	display: flex;
+	justify-content: flex-end;
+	gap: var(--space-xs);
+	margin-top: var(--space-sm);
+}
+.goal-action
+{
+	font-size: var(--text-sm);
+	padding: 0.4rem 0.8rem;
+	border-radius: var(--radius-sm);
+	background: transparent;
+	border: 1px solid var(--border-dark);
+	color: var(--text-muted);
+	cursor: pointer;
+}
+.goal-action:hover { color: var(--text-light); border-color: var(--primary); }
+.goal-action--danger { color: var(--error); }
+
+/* GoalCard Animations Styles. */
+@keyframes rainbowShift
+{
+	0% { background-position: 0% 0; }
+	100% { background-position: 200% 0; }
+}

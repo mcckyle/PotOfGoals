@@ -1,0 +1,69 @@
+/* Filename: src/pages/Dashboard.css */
+
+/* ====================================
+    Dashboard Layout Styles.
+======================================= */
+.goals-dashboard
+{
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xl);
+}
+
+/* ====================================
+    Dashboard Header Styles.
+======================================= */
+.dashboard-header { display: flex; flex-direction: column; gap: 0.35rem; }
+.dashboard-subtitle { font-size: var(--text-sm); color: var(--text-muted); }
+.dashboard-create { margin-top: var(--space-sm); }
+
+/* ====================================
+    Dashboard Goals Grid Styles.
+======================================= */
+.goals-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: var(--space-lg);
+}
+
+/* ====================================
+    Dashboard Loading State Styles.
+======================================= */
+.dashboard-loading {
+	text-align: center;
+	font-size: var(--text-sm);
+	color: var(--text-muted);
+	margin-top: var(--space-lg);
+}
+
+/* ====================================
+    Dashboard Empty State Styles.
+======================================= */
+.dashboard-empty
+{
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	align-items: center;
+	justify-content: center;
+	padding: var(--space-xl);
+}
+.dashboard-empty-title { font-size: var(--text-lg); font-weight: 600; }
+.dashboard-empty-text { font-size: var(--text-sm); color: var(--text-muted); }
+
+/* ====================================
+    Dashboard Light Mode Styles.
+======================================= */
+/*@media (prefers-color-scheme: light)
+{
+	.dashboard-empty { background: var(--surface-light); border-color: var(--border-light); }
+}*/
+
+/* ====================================
+    Dashboard Media Query Styles.
+======================================= */
+@media (max-width: 640px)
+{
+	.goals-dashboard { gap: var(--space-lg); }
+}

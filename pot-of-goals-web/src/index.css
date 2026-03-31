@@ -1,0 +1,253 @@
+/* Filename: src/index.css */
+
+/* ====================================
+    Design Tokens.
+======================================= */
+:root {
+	/* Neutral Palette. */
+	--bg-dark: #0e1116;
+	--bg-light: #ffffff;
+	
+	--surface-dark: #161a22;
+	--surface-light: #f7f9fc;
+	
+	--border-dark: rgba(255, 255, 255, 0.06);
+	--border-light: rgba(0, 0, 0, 0.06);
+	
+	/* Brand. */
+	--primary: #22c55e; /* Color: Emerald. */
+	--primary-strong: #16a34a; /* Color: Deep Emerald Hover. */
+	--primary-muted: rgba(34, 197, 94, 0.18);
+	--accent: #34d399; /* Color: Soft Mint Highlight. */
+	--accent-muted: rgba(52, 211, 153, 0.18);
+	--error: #ef6f6c;
+	
+	/* Text Colors. */
+	--text-dark: #0f172a;
+	--text-light: #ecf2f7;
+	--text-muted-dark: rgba(236, 242, 247, 0.65);
+	--text-muted-light: rgba(15, 23, 42, 0.6);
+	
+	/* Fonts. */
+	--font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+	  "Segoe UI", Roboto, sans-serif;
+	  
+	/* Font Sizes. */
+	--text-sm: 0.875rem;
+	--text-base: 1rem; /* Default: Medium Text. */
+	--text-lg: 1.125rem;
+	--text-xl: 1.35rem;
+	--text-2xl: 1.7rem;
+	
+	/* Spacing. */
+	--space-xs: 0.5rem;
+	--space-sm: 0.75rem;
+	--space-md: 1rem;
+	--space-lg: 1.5rem;
+	--space-xl: 2.25rem;
+	--space-2xl: 3rem;
+	
+	--content-width: 720px;
+	--content-wide: 960px;
+	  
+	/* Radius. */
+	--radius-sm: 10px;
+	--radius-md: 16px;
+	--radius-lg: 24px;
+	
+	/* Shadows. */
+	--shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.22);
+	--shadow-md: 0 24px 64px rgba(0, 0, 0, 0.35);
+	
+	/* Motion. */
+	--ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-base: 220ms var(--ease-standard);
+	--transition-fast: 140ms var(--ease-standard);
+}
+
+/* ====================================
+    Global Reset Styles..
+======================================= */
+*, *::before, *::after { box-sizing: border-box; }
+button, a, input, textarea, .card, .surface {
+	transition:
+	  background-color var(--transition-fast),
+	  color var(--transition-fast),
+	  box-shadow var(--transition-fast),
+	  border-color var(--transition-fast);
+}
+
+/* ====================================
+    Base Layout Styles.
+======================================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  /* background: var(--bg-dark); */
+  background: radial-gradient(circle at 50% -20%, rgba(139, 92, 246, 0.06), transparent 60%), var(--bg-dark);
+  color: var(--text-light);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+h1 { font-size: clamp(1.8rem, 3vw, 2.2rem); }
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.1rem; }
+h4 { font-size: var(--text-base); }
+h1, h2, h3 { color: rgba(232, 234, 241, 0.98); }
+p {
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+	font-size: var(--text-base);
+	color: var(--text-muted);
+	line-height: 1.75;
+}
+.section-title { font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-md); }
+
+/* ====================================
+    Layout Utilities Styles.
+======================================= */
+
+/* Surface Styles. */
+.surface
+{
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01)), var(--surface-dark);
+	border-radius: var(--radius-lg);
+	border: 1px solid var(--border-dark);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+	padding: var(--space-xl);
+}
+.surface-muted { background: color-mix(in srgb, var(--surface-dark) 85%, transparent); }
+
+/* ====================================
+    Page Layout System Styles.
+======================================= */
+.page {
+	width: 100%;
+	max-width: 720px;
+	margin-inline: auto;
+	padding-block: var(--space-2xl);
+}
+.page-wide { max-width: 1100px; }
+.page-centered {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+.page-title { font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+.page-subtitle {
+	max-width: 520px;
+	margin-bottom: var(--space-lg);
+	color: var(--text-muted);
+}
+
+/* ====================================
+    Buttons Styles.
+======================================= */
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	
+	padding: 0.6rem 1.1rem;
+	border-radius: var(--radius-md);
+	border: 1px solid transparent;
+	
+	font-size: var(--text-sm);
+	font-weight: 500;
+	cursor: pointer;
+	
+	background: var(--primary);
+	color: white;
+	box-shadow: var(--shadow-sm);
+	
+	transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+.button:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(34, 197, 94, 0.28); }
+.button.secondary {
+	background: transparent;
+	color: var(--text-light);
+	border-color: var(--border-dark);
+}
+.button.ghost {
+	background: transparent;
+	box-shadow: none;
+	color: var(--text-muted);
+}
+
+/* ====================================
+    Links Styles.
+======================================= */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  
+  transition: color var(--transition-fast);
+}
+a:hover { color: var(--accent); }
+
+/* Input Styles. */
+button, input, textarea { font-family: inherit; }
+input, textarea {
+	width: 100%;
+	padding: var(--space-sm) var(--space-md);
+	border: 1px solid var(--border-dark);
+	border-radius: var(--radius-md);
+	background: var(--surface-dark);
+	color: var(--text-light);
+	font-size: var(--text-base);
+}
+input:focus, textarea:focus {
+	border-color: var(--primary);
+	outline: none;
+	box-shadow: 0 0 0 3px var(--primary-muted);
+}
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+
+/* Focus Accessibility Styles. */
+:focus-visible {
+	outline: 2px solid var(--primary);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(75, 123, 253, 0.35); border-radius: 4px; }
+::selection { background: var(--primary-muted); color: var(--text-light); }
+
+.fade-in { animation: fadeIn 260ms var(--ease-standard) both; }
+
+/* ====================================
+    Animations Styles.
+======================================= */
+@keyframes fadeIn {
+	from { opacity: 0; transform: translateY(4px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====================================
+    Light Mode Styles.
+======================================= */
+@media (prefers-color-scheme: light) {
+  body { background: var(--bg-light); color: var(--text-dark); }
+  .surface { background: var(--surface-light); border-color: var(--border-light); }
+  input, textarea { background: white; border-color: var(--border-light); color: var(--text-dark); }
+  p { color: var(--text-muted-light); }
+}
+
+/* ====================================
+    Reduced Motion Styles.
+======================================= */
+@media(prefers-reduced-motion: reduce) {
+	* { animation: none !important; transition: none !important; }
+}

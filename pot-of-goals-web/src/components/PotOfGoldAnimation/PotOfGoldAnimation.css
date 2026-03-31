@@ -1,0 +1,110 @@
+/* Filename: src/components/PotOfGoldAnimation/PotOfGoldAnimation.css */
+
+/* ====================================
+    PotOfGoldAnimation Root Styles.
+======================================= */
+.pot-animation
+{
+	position: absolute;
+	inset: 0;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	pointer-events: none;
+	z-index: 2;
+}
+
+/* ====================================
+    PotOfGoldAnimation Rainbow Energy Burst Styles.
+======================================= */
+.pot-animation-rainbow
+{
+	position: absolute;
+	
+	width: 160px;
+	height: 160px;
+	
+	border-radius: 50%;
+	
+	background: conic-gradient(
+	  #ff5f6d,
+	  #ffc371,
+	  #f9f871,
+	  #7bed9f,
+	  #70a1ff,
+	  #a29bfe,
+	  #ff6ec7,
+	  #ff5f6d
+	);
+	
+	filter: blur(18px);
+	opacity: 0.65;
+	
+	animation: rainbowBurst 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* ====================================
+    PotOfGoldAnimation Gold Icon (Focal Point) Styles.
+======================================= */
+.pot-animation-gold
+{
+	position: relative;
+	font-size: 2.2rem;
+	
+	animation: goldPop 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ====================================
+    PotOfGoldAnimation Sparkles (Structured Particles) Styles.
+======================================= */
+.pot-animation-sparkles { position: absolute; inset: 0; }
+.pot-animation-sparkles span
+{
+	position: absolute;
+	
+	width: 6px;
+	height: 6px;
+	
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.9);
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+	
+	animation: sparkleFloat 1.4s ease-out forwards;
+}
+
+/* Particle Position Styles. */
+.pot-animation-sparkles span:nth-child(1) { top: 40%; left: 45%; }
+.pot-animation-sparkles span:nth-child(1) { top: 50%; left: 60%; }
+.pot-animation-sparkles span:nth-child(1) { top: 55%; left: 35%; }
+.pot-animation-sparkles span:nth-child(1) { top: 35%; left: 55%; }
+
+/* PotOfGoldAnimation Animation Styles. */
+@keyframes rainbowBurst
+{
+	0% { transform: scale(0.4); opacity: 0.9; }
+	70% { opacity: 0.5; }
+	100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes goldPop
+{
+	0% { transform: scale(0.5) translateY(6px) rotate(-8deg); opacity: 0; }
+	60% { transform: scale(1.15) translateY(-2px) rotate(4deg); opacity: 1; }
+	100% { transform: scale(1) translateY(0) rotate(0); }
+}
+
+@keyframes sparkleFloat
+{
+	0% { transform: translateY(8px) scale(0.6); opacity: 0; }
+	40% { opacity: 1; }
+	100% { transform: translateY(-26px) scale(1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+	.pot-animation-rainbow,
+	.pot-animation-gold,
+	.pot-animation-sparkles span { animation: none; opacity: 0.6; }
+}
