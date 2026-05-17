@@ -1,6 +1,6 @@
 //****************************************************************************************
 // Filename: App.jsx
-// Date: 14 March 2026
+// Date: 16 May 2026
 // Author: Kyle McColgan
 // Description: This file contains the React entry point for PotOfGoals.
 //****************************************************************************************
@@ -21,6 +21,11 @@ import "./App.css";
 const App = () => {
       return (	
 		  <BrowserRouter>
+		    <div className="app-shell">
+			  <div className="app-background">
+			    <div className="ambient ambient-primary" />
+				<div className="ambient ambient-secondary" />
+			</div>
 		    <div className="app">
 			  <Header />
 			  <main className="main">
@@ -59,10 +64,16 @@ const App = () => {
 				  {/* Fallback Route. */}
 				  <Route
 					path="*"
-					element={<h2 className="not-found">Page not found</h2>}
+					element={
+						<section className="not-found fade-in">
+						  <h2>Page not found</h2>
+						  <p>The page you requested does not exist.</p>
+						</section>
+					}
 				  />
 				</Routes>
 			  </main>
+			</div>
 			</div>
 		  </BrowserRouter>
 		);

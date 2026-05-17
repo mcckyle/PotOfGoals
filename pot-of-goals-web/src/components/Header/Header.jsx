@@ -1,6 +1,6 @@
 //****************************************************************************************
 // Filename: Header.jsx
-// Date: 28 March 2026
+// Date: 16 May 2026
 // Author: Kyle McColgan
 // Description: This file contains the Header component for PotOfGoals.
 //****************************************************************************************
@@ -28,20 +28,32 @@ const Header = () => {
   
   //Close the dropdown menu when clicking outside the menu.
   useEffect(() => {
-	  if ( ! menuOpen)
+	  if (!menuOpen)
 	  {
 		  return;
 	  }
 	  
-	  const handleClickOutside = (e) => {
-		  if ( (avatarRef.current) && ( ! avatarRef.current.contains(e.target)) )
+	  const handleClickOutside = (event) => {
+		  if ((avatarRef.current) && (!avatarRef.current.contains(event.target)))
+		  {
+			  setMenuOpen(false);
+		  }
+	  };
+	  
+	  const handleEscape = (event) => {
+		  if (event.key === "Escape")
 		  {
 			  setMenuOpen(false);
 		  }
 	  };
 	  
 	  document.addEventListener("mousedown", handleClickOutside);
-	  return () => document.removeEventListener("mousedown", handleClickOutside);
+	  document.addEventListener("keydown", handleEscape);
+	  return () =>
+	  {
+		  document.removeEventListener("mousedown", handleClickOutside);
+		  document.removeEventListener("keydown", handleEscape);
+	  };
   }, [menuOpen]);
   
   return (
@@ -49,7 +61,7 @@ const Header = () => {
 		<div className="header-inner">
 		
 		  {/* Left Logo. */}
-		  <Link to="/" className="logo">
+		  <Link to="/" className="logo" aria-label="PotOfGoals home">
 		    PotOfGoals
 		  </Link>
 		
@@ -77,28 +89,23 @@ const Header = () => {
 		    <div
 			  ref={avatarRef}
 			  className="avatar-wrapper"
-			  role="button"
-			  tabIndex={0}
-			  aria-haspopup="menu"
-			  aria-expanded={menuOpen}
-		      onClick={() => setMenuOpen((open) => ! open)}
-			  onKeyDown={(e) => {
-				  if ( (e.key === "Enter") || (e.key === " ") )
-				  {
-					  e.preventDefault();
-					  setMenuOpen((open) => ! open);
-				  }
-				  if (e.key === "Escape") setMenuOpen(false);
-			  }}
 			>
-			  <div className="avatar">
-			    {user.username?.charAt(0).toUpperCase() || "?"}
-			  </div>
+			  <button
+			    type="button"
+				className="avatar-button"
+				aria-haspopup="menu"
+				aria-expanded={menuOpen}
+				aria-label="Open user menu"
+				onClick={() => setMenuOpen((open) => !open)}
+			  >
+				  <div className="avatar">
+					{user.username?.charAt(0).toUpperCase() || "?"}
+				  </div>
+			  </button>
 			  
 			  <div
 			    className={`menu ${menuOpen ? "open" : ""}`}
 				role="menu"
-				onClick={(e) => e.stopPropagation()}
 			  >
 			    <Link to="/profile" className="menu-item" role="menuitem" onClick={() => setMenuOpen(false)}>
 				  Profile
@@ -114,7 +121,7 @@ const Header = () => {
 			</div>
 		) : (
 		  <div className="auth-links">
-		    <Link to="/login" className="button ghost">Login</Link>
+		    <Link to="/login" className="button secondary">Login</Link>
 		    <Link to="/register" className="button">Register</Link>
 		  </div>
 		)}

@@ -1,6 +1,6 @@
 //****************************************************************************************
 // Filename: HomePage.jsx
-// Date: 28 March 2026
+// Date: 16 May 2026
 // Author: Kyle McColgan
 // Description: This file contains the HomePage component for PotOfGoals.
 //****************************************************************************************
@@ -14,21 +14,22 @@ export default function HomePage()
 	  <main className="home page-centered fade-in">
 	    {/* Hero Section. */}
 	    <section className="home-hero">
-		  <span className="home-eyebrow">Designed for goals</span>
+		  <span className="home-eyebrow">Simple goal tracking</span>
 		  
 		    <h1 className="home-title">
-			  Track what matters.
+			  Build momentum
 			  <br />
-			  <span>Finish what you start.</span>
+			  <span>one goal at a time.</span>
 			</h1>
 			
 			<p className="home-subtitle">
-		      A simple, modern space to track personal goals.
+		      A dedicated space for tracking progress
+			  without distractions or unnecessary complexity.
 		    </p>
 			
 			<div className="home-actions">
 		      <Link to="/dashboard" className="button">
-			    Create a goal
+			    Start tracking
 			  </Link>
 		    </div>
 		</section>
@@ -36,23 +37,27 @@ export default function HomePage()
 		{/* Feature Cards Grid. */}
 		<section className="home-grid" aria-label="Key features">
 		  <article className="home-card surface">
-		    <h2 className="card-title">Intentional design</h2>
+		    <h2 className="card-title">Focused by design</h2>
 			<p className="card-text">
-			  No feeds. No distractions. Just goals you care about.
+			  A calm interface centered around entirely
+			  around personal progress.
 			</p>
 		  </article>
 		  
 		  <article className="home-card surface">
-		    <h2 className="card-title">Track your progress</h2>
+		    <h2 className="card-title">Track momentum</h2>
 			<p className="card-text">
-			  Move goals forward naturally with simple progress tracking.
+			  Update goals naturally with simple
+			  progress tracking that stays out of
+			  your way.
 			</p>
 		  </article>
 		  
 		  <article className="home-card surface">
-		    <h2 className="card-title">Celebrate progress</h2>
+		    <h2 className="card-title">Stay motivated</h2>
 			<p className="card-text">
-			  Watch the rainbow fill as you move closer to completion.
+			  Watch progress evolve visually as you
+			  move closer toward completion.
 			</p>
 		  </article>
 		</section>

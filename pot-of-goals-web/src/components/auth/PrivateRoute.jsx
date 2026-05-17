@@ -1,8 +1,8 @@
 //****************************************************************************************
 // Filename: PrivateRoute.jsx
-// Date: 1 February 2026
+// Date: 16 May 2026
 // Author: Kyle McColgan
-// Description: This file contains the wrapper for private routes for LoveNotes.
+// Description: This file contains the wrapper for private routes for PotOfGoals.
 //****************************************************************************************
 
 import { Navigate } from "react-router-dom";
@@ -15,14 +15,14 @@ const PrivateRoute = ({ children }) => {
 	if (authorized === null)
 	{
 		return (
-		  <div className="loading-screen">
+		  <section className="loading-screen fade-in">
 		    <div className="loading-spinner" />
-			<p>Checking session...</p>
-		  </div>
+			<p>Checking your secure session...</p>
+		  </section>
 		);
 	}
 	
-	if ( ! authorized)
+	if (!authorized)
 	{
 		return <Navigate to="/login" replace />;
 	}
