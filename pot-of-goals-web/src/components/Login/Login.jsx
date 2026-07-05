@@ -1,13 +1,13 @@
 //****************************************************************************************
 // Filename: Login.jsx
-// Date: 28 March 2026
+// Date: 4 July 2026
 // Author: Kyle McColgan
 // Description: This file contains the Login component for PotOfGoals.
 //****************************************************************************************
 
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./Login.css"; //Import the custom CSS file.
 
@@ -72,6 +72,14 @@ export default function Login()
 			Sign in
 		</button>
 	  </form>
+	  <footer className="auth-footer">
+	    <p>
+		  Don't have an account?{" "}
+		  <Link to="/register">
+		    Create one
+		  </Link>
+		</p>
+	  </footer>
 	</main>
     );
 };

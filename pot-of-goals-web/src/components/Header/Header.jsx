@@ -1,6 +1,6 @@
 //****************************************************************************************
 // Filename: Header.jsx
-// Date: 16 May 2026
+// Date: 4 July 2026
 // Author: Kyle McColgan
 // Description: This file contains the Header component for PotOfGoals.
 //****************************************************************************************
@@ -99,7 +99,7 @@ const Header = () => {
 				onClick={() => setMenuOpen((open) => !open)}
 			  >
 				  <div className="avatar">
-					{user.username?.charAt(0).toUpperCase() || "?"}
+					{user.username?.[0]?.toUpperCase() ?? "?"}
 				  </div>
 			  </button>
 			  
@@ -114,7 +114,15 @@ const Header = () => {
 				  Settings
 				</Link>
 				<div className="menu-divider" />
-				<button className="menu-item danger" role="menuitem" onClick={handleLogout}>
+				<button
+				  type="button"
+				  className="menu-item danger"
+				  role="menuitem"
+				  onClick={async () => {
+					  setMenuOpen(false);
+					  await handleLogout();
+				  }}
+				>
 				  Log out
 				</button>
 			  </div>

@@ -1,13 +1,13 @@
 //****************************************************************************************
 // Filename: Register.jsx
-// Date: 28 March 2026
+// Date: 4 July 2026
 // Author: Kyle McColgan
 // Description: This file contains the Register component for PotOfGoals.
 //****************************************************************************************
 
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { registerUser } from "../../services/AuthService";
 import { AuthContext } from "../../context/AuthContext";
 import "./Register.css"; //Import the custom CSS file
@@ -99,6 +99,14 @@ export default function Register()
 			Create account
 		  </button>
          </form>
+	    <footer className="auth-footer">
+	      <p>
+		    Already have an account?{" "}
+		    <Link to="/login">
+		      Sign in
+		    </Link>
+		  </p>
+	    </footer>
 	  </main>
     );
 };

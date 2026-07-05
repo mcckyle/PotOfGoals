@@ -11,21 +11,21 @@
   display: flex;
   justify-content: center;
   
-  backdrop-filter: blur(18px);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)), rgba(10, 14, 19, 0.78);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(22px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02)), rgba(10, 14, 19, 0.72);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 40px rgba(0, 0, 0, 0.18);
 }
 
 /* ====================================
     Header Inner Layout Styles.
 ======================================= */
 .header-inner {
-	width: 100%;
-	max-width: 1100px;
+	width: min(100%, var(--content-wide));
 	margin-inline: auto;
 	
-	min-height: 72px;
-	padding-inline: clamp(1.25rem, 3vw, 2rem);
+	min-height: 4.5rem;
+	padding-inline: var(--page-padding);
 	
 	display: flex;
 	align-items: center;
@@ -38,9 +38,9 @@
 ======================================= */
 .logo {
 	position: relative;
-	font-size: 1rem;
-	font-weight: 700;
-	letter-spacing: -0.03em;
+	font-size: 1.05rem;
+	font-weight: 650;
+	letter-spacing: -0.025em;
 	color: var(--text-light);
 	
 	transition: color var(--transition-fast), opacity var(--transition-fast);
@@ -54,7 +54,7 @@
 .nav-item {
   position: relative;
   
-  padding-block: 0.25rem;
+  padding-block: 0.75rem;
   font-size: 0.88rem;
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -67,9 +67,9 @@
 .nav-item::after {
 	content: "";
 	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: -1rem;
+	left: 0.15rem;
+	right: 0.15rem;
+	bottom: 0.1rem;
 	
 	height: 2px;
 	border-radius: 999px;
@@ -101,12 +101,13 @@
 	height: 40px;
 	display: grid;
 	place-items: center;
+	border: 1px solid rgba(255, 255, 255, 0.08);
 	border-radius: 50%;
 	font-weight: 700;
 	font-size: 0.9rem;
 	background: linear-gradient(135deg, var(--primary), var(--accent));
 	color: white;
-	box-shadow: 0 10px 24px rgba(34, 197, 94, 0.24);
+	box-shadow: 0 10px 28px rgba(34, 197, 94, 0.22);
 	
 	transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
@@ -129,12 +130,14 @@
 	backdrop-filter: blur(20px);
 	
 	opacity: 0;
-	transform: translateY(-8px) scale(0.98);
+	visibility: hidden;
+	transform-origin: top right;
+	transform: translateY(-6px) scale(0.97);
 	pointer-events: none;
 	
-	transition: opacity var(--transition-base), transform var(--transition-base);
+	transition: opacity var(--transition-base), transform var(--transition-base), visibility 0s linear var(--transition-base);
 }
-.menu.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.menu.open { visibility: visible; opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
 
 /* Header Menu Item Styles. */
 .menu-item {
@@ -153,7 +156,8 @@
 	
 	transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
-.menu-item:hover { background: rgba(255, 255, 255, 0.05); transform: translateX(2px); }
+.menu-item:hover { background: rgba(255, 255, 255, 0.055); }
+.menu-item:active { background: rgba(255, 255, 255, 0.08); }
 .menu-item.danger { color: var(--error); }
 .menu-item.danger:hover { background: rgba(239, 111, 108, 0.1); }
 
