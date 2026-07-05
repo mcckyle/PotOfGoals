@@ -161,18 +161,6 @@
 .menu-divider { height: 1px; margin: 0.45rem 0; background: rgba(255, 255, 255, 0.06); }
 
 /* ====================================
-    Header Light Mode Styles.
-======================================= */
-/*@media (prefers-color-scheme: light) {
-  .header {
-	background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01)), color-mix(in srgb, var(--bg-light) 94%, transparent);
-	border-bottom-color: var(--border-light);
-  }
-  .menu { background: var(--surface-light); border-color: var(--border-light); }
-  .nav-item, .auth-link { color: var(--text-dark); }
-}*/
-
-/* ====================================
     Header Media Query Styles.
 ======================================= */
 @media (max-width: 768px)

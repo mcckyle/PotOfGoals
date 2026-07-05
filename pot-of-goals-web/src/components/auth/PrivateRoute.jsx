@@ -1,6 +1,6 @@
 //****************************************************************************************
 // Filename: PrivateRoute.jsx
-// Date: 16 May 2026
+// Date: 4 July 2026
 // Author: Kyle McColgan
 // Description: This file contains the wrapper for private routes for PotOfGoals.
 //****************************************************************************************
@@ -17,7 +17,7 @@ const PrivateRoute = ({ children }) => {
 		return (
 		  <section className="loading-screen fade-in">
 		    <div className="loading-spinner" />
-			<p>Checking your secure session...</p>
+			<p>Signing you in…</p>
 		  </section>
 		);
 	}

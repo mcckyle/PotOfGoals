@@ -1,6 +1,6 @@
 //****************************************************************************************
 // Filename: App.jsx
-// Date: 16 May 2026
+// Date: 4 July 2026
 // Author: Kyle McColgan
 // Description: This file contains the React entry point for PotOfGoals.
 //****************************************************************************************
@@ -65,9 +65,12 @@ const App = () => {
 				  <Route
 					path="*"
 					element={
-						<section className="not-found fade-in">
+						<section className="not-found page page-centered fade-in">
+						  <h1 className="page-title">404</h1>
 						  <h2>Page not found</h2>
-						  <p>The page you requested does not exist.</p>
+						  <p className="page-subtitle">
+						    The page you're looking for does not exist or may have been moved.
+						  </p>
 						</section>
 					}
 				  />
